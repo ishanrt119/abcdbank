@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABD Bank - Services</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .navbar {
+            margin-top: 20px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .navbar ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #f0f0f0;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .feature {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .feature p {
+            margin-bottom: 20px;
+        }
+
+        .calculator {
+            margin-top: 40px;
+        }
+
+        .calculator h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .calculator-form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .calculator-form input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .calculator-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .calculator-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            color: #fff;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>Welcome to ABD Bank</h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="accounts.html">Accounts</a></li>
+                    <li><a href="loans.html">Loans</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="contact_us.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <section class="feature">
+                <h2>Online Banking</h2>
+                <p>Manage your accounts, transfer funds, pay bills, and more with our convenient online banking service.</p>
+                <a href="login.html">Login to Online Banking</a>
+            </section>
+
+            <section class="feature">
+                <h2>Loan EMI Calculator</h2>
+                <div class="calculator">
+                    <h3>Calculate Your Loan EMI</h3>
+                    <form class="calculator-form">
+                        <label for="loan-amount">Loan Amount:</label>
+                        <input type="text" id="loan-amount" name="loan-amount" placeholder="Enter Loan Amount">
+                        <label for="interest-rate">Interest Rate:</label>
+                        <input type="text" id="interest-rate" name="interest-rate" placeholder="Enter Interest Rate">
+                        <label for="loan-term">Loan Term (in months):</label>
+                        <input type="text" id="loan-term" name="loan-term" placeholder="Enter Loan Term">
+                        <input type="submit" value="Calculate">
+                    </form>
+                </div>
+            </section>
+
+            <section class="feature">
+                <h2>Investment Calculator</h2>
+                <div class="calculator">
+                    <h3>Calculate Your Investment Returns</h3>
+                    <form class="calculator-form">
+                        <label for="investment-amount">Investment Amount:</label>
+                        <input type="text" id="investment-amount" name="investment-amount" placeholder="Enter Investment Amount">
+                        <label for="annual-return">Annual Return Rate:</label>
+                        <input type="text" id="annual-return" name="annual-return" placeholder="Enter Annual Return Rate">
+                        <label for="investment-term">Investment Term (in years):</label>
+                        <input type="text" id="investment-term" name="investment-term" placeholder="Enter Investment Term">
+                        <input type="submit" value="Calculate">
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 ABD Bank. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

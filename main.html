@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABD Bank - Home</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .navbar {
+            margin-top: 20px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .navbar ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #f0f0f0;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .feature {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .feature p {
+            margin-bottom: 20px;
+        }
+
+        /* About ABD Bank Section */
+        .about-us {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-us h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .founder-info {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .founder-info img {
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .founder-info h3 {
+            margin-bottom: 5px;
+            color: #007bff;
+        }
+
+        .founder-info p {
+            margin-bottom: 15px;
+            color: #777;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            color: #fff;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.jpg" alt="ABD Bank Logo">
+            </div>
+            <h1>Welcome to ABD Bank</h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="main.html" class="active">Home</a></li>
+                    <li><a href="accounts.html">Accounts</a></li>
+                    <li><a href="loans.html">Loans</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="contact_us.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <section class="feature">
+                <h2>Personalized Banking Solutions</h2>
+                <p>Discover our range of personal banking services tailored to meet your individual needs.</p>
+                <a href="accounts.html">Explore Accounts</a>
+            </section>
+
+            <section class="feature">
+                <h2>Competitive Loan Options</h2>
+                <p>Get access to competitive loan options designed to help you achieve your financial goals.</p>
+                <a href="loans.html">View Loan Offers</a>
+            </section>
+
+            <section class="feature">
+                <h2>Comprehensive Banking Services</h2>
+                <p>From online banking to investment services, we offer a wide range of comprehensive banking solutions.</p>
+                <a href="services.html">Discover Services</a>
+            </section>
+
+            <!-- About ABD Bank Section -->
+            <section class="about-us">
+               
+                <h2>CEO's Corner</h2>
+                <div class="founder-info">
+                    <img src="founder.jpg" alt="Founder of ABD Bank" height="100" width="100">
+                    <h3>John Doe</h3>
+                    <p>Founder & CEO, ABD Bank</p>
+                    <p>"At ABD Bank, our mission is to empower individuals and businesses to achieve their financial goals. We are dedicated to building lasting relationships with our customers and providing them with the tools and resources they need to succeed."</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 ABD Bank. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
