@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABD Bank - Net Banking Login</title>
+    <title>ABD Bank - Transfer Funds</title>
     <style>
         /* Reset styles */
         * {
@@ -25,7 +25,6 @@
             color: #fff;
             padding: 20px;
             text-align: center;
-            position: relative;
         }
 
         .header h1 {
@@ -44,37 +43,44 @@
             height: auto;
         }
 
-        /* Login Form */
-        .login-form {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
+        /* Main Content */
+        .main-content {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .transfer-form {
             background-color: #fff;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .login-form h2 {
+        .transfer-form h2 {
             margin-bottom: 20px;
             color: #007bff;
-            text-align: center;
         }
 
-        .login-form label {
+        .transfer-form label {
             display: block;
             margin-bottom: 10px;
         }
 
-        .login-form input[type="text"],
-        .login-form input[type="password"] {
-            width: calc(100% - 20px);
+        .transfer-form input[type="text"] {
+            width: 100%;
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 5px;
             border: 1px solid #ccc;
         }
 
-        .login-form input[type="submit"] {
+        .transfer-form input[type="submit"] {
             width: 100%;
             padding: 10px;
             background-color: #007bff;
@@ -85,27 +91,26 @@
             transition: background-color 0.3s;
         }
 
-        .login-form input[type="submit"]:hover {
+        .transfer-form input[type="submit"]:hover {
             background-color: #0056b3;
         }
 
-        .form-button {
-            text-align: center;
+        .back-button {
             margin-top: 20px;
         }
 
-        .form-button button {
+        .back-button a {
+            display: inline-block;
             padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
+            background-color: #ccc;
+            color: #333;
+            text-decoration: none;
             border-radius: 5px;
-            cursor: pointer;
             transition: background-color 0.3s;
         }
 
-        .form-button button:hover {
-            background-color: #0056b3;
+        .back-button a:hover {
+            background-color: #999;
         }
 
         /* Footer */
@@ -135,6 +140,19 @@
         .social-icons a:hover {
             color: #f0f0f0;
         }
+ .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+ .back-btn:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -143,33 +161,27 @@
         <div class="logo">
             <img src="logo.jpg" alt="ABD Bank Logo">
         </div>
-        <h1>Net Banking Login</h1>
+        <h1>Welcome to ABD Bank</h1>
     </header>
 
-    <!-- Login Form -->
-    <div class="login-form">
-        <h2>Login to Net Banking</h2>
-        <form action="home.html" method="post" onsubmit="return validateForm()">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" required autocomplete="off">
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-
-            <label for="repeat-password">Repeat Password:</label>
-            <input type="password" id="repeat-password" name="repeat-password" placeholder="Repeat your password" required>
-
-            <div class="security-check">
-                <input type="checkbox" id="security" name="security" required>
-                <label for="security">I acknowledge the security check.</label>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <div class="transfer-form">
+                <h2>Transfer Funds</h2>
+                <form id="transferForm" onsubmit="return confirmTransfer()">
+                    <label for="recipientName">Recipient's Name:</label>
+                    <input type="text" id="recipientName" name="recipientName" required>
+                    <label for="recipientAccountNumber">Recipient's Account Number:</label>
+                    <input type="text" id="recipientAccountNumber" name="recipientAccountNumber" required>
+                    <label for="amount">Amount:</label>
+                    <input type="text" id="amount" name="amount" required>
+                    <input type="submit" value="Submit">
+                </form>
             </div>
-
-            <input type="submit" value="Login">
-        </form>
-
-        <!-- Form Button -->
-        <div class="form-button">
-            <button onclick="goToHomePage()">Go to Home Page</button>
+            
+                <button class="back-btn" onclick="goBack()">Go Back</button>
+            
         </div>
     </div>
 
@@ -187,27 +199,24 @@
     </footer>
 
     <script>
-        function validateForm() {
-            var password = document.getElementById("password").value;
-		var username = document.getElementById("username").value;
-            var repeatPassword = document.getElementById("repeat-password").value;
+        function confirmTransfer() {
+            var recipientName = document.getElementById('recipientName').value;
+            var recipientAccountNumber = document.getElementById('recipientAccountNumber').value;
+            var amount = document.getElementById('amount').value;
 
-            if (password !== repeatPassword) {
-                alert("Passwords do not match!");
-                return false;
-            } else if (password !== "webdevproj" || repeatPassword !== "webdevproj" || username !== "12345678") {
-                alert("Username or password is incorrect!");
-                return false;
+            var confirmMsg = "Do you want to transfer $" + amount + " to " + recipientName + " (" + recipientAccountNumber + ")?";
+            var confirmed = confirm(confirmMsg);
+
+            if (confirmed) {
+                alert("Payment of $" + amount + " to " + recipientName + " successful!");
+                document.getElementById('transferForm').reset();
             }
 
-            return true;
+            return false; // Prevent form submission
         }
-
-        function goToHomePage() {
-            window.location.href = "main.html";
+function goBack() {
+            window.history.back();
         }
-
-
     </script>
 </body>
 </html>

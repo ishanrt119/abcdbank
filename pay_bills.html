@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABD Bank - Net Banking Login</title>
+    <title>ABD Bank - Pay Your Bills</title>
     <style>
         /* Reset styles */
         * {
@@ -25,7 +25,6 @@
             color: #fff;
             padding: 20px;
             text-align: center;
-            position: relative;
         }
 
         .header h1 {
@@ -44,37 +43,44 @@
             height: auto;
         }
 
-        /* Login Form */
-        .login-form {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
+        /* Main Content */
+        .main-content {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .bill-payment-form {
             background-color: #fff;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .login-form h2 {
+        .bill-payment-form h2 {
             margin-bottom: 20px;
             color: #007bff;
-            text-align: center;
         }
 
-        .login-form label {
+        .bill-payment-form label {
             display: block;
             margin-bottom: 10px;
         }
 
-        .login-form input[type="text"],
-        .login-form input[type="password"] {
-            width: calc(100% - 20px);
+        .bill-payment-form input[type="text"] {
+            width: 100%;
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 5px;
             border: 1px solid #ccc;
         }
 
-        .login-form input[type="submit"] {
+        .bill-payment-form input[type="submit"] {
             width: 100%;
             padding: 10px;
             background-color: #007bff;
@@ -85,26 +91,7 @@
             transition: background-color 0.3s;
         }
 
-        .login-form input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        .form-button {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .form-button button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .form-button button:hover {
+        .bill-payment-form input[type="submit"]:hover {
             background-color: #0056b3;
         }
 
@@ -135,6 +122,19 @@
         .social-icons a:hover {
             color: #f0f0f0;
         }
+ .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+ .back-btn:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -143,33 +143,25 @@
         <div class="logo">
             <img src="logo.jpg" alt="ABD Bank Logo">
         </div>
-        <h1>Net Banking Login</h1>
+        <h1>Welcome to ABD Bank</h1>
     </header>
 
-    <!-- Login Form -->
-    <div class="login-form">
-        <h2>Login to Net Banking</h2>
-        <form action="home.html" method="post" onsubmit="return validateForm()">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" required autocomplete="off">
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-
-            <label for="repeat-password">Repeat Password:</label>
-            <input type="password" id="repeat-password" name="repeat-password" placeholder="Repeat your password" required>
-
-            <div class="security-check">
-                <input type="checkbox" id="security" name="security" required>
-                <label for="security">I acknowledge the security check.</label>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <div class="bill-payment-form">
+                <h2>Pay Your Bills</h2>
+                <form id="billPaymentForm" onsubmit="return confirmPayment()">
+                    <label for="billCompany">Bill Company:</label>
+                    <input type="text" id="billCompany" name="billCompany" required>
+<label for="companyAccountNumber">Account Number:</label>
+                    <input type="text" id="companyAccountNumber" name="companyAccountNumber" required>
+                    <label for="billAmount">Bill Amount:</label>
+                    <input type="text" id="billAmount" name="billAmount" required>
+                    <input type="submit" value="Pay">
+                </form>
             </div>
-
-            <input type="submit" value="Login">
-        </form>
-
-        <!-- Form Button -->
-        <div class="form-button">
-            <button onclick="goToHomePage()">Go to Home Page</button>
+            <button class="back-btn" onclick="goBack()">Go Back</button>
         </div>
     </div>
 
@@ -187,27 +179,24 @@
     </footer>
 
     <script>
-        function validateForm() {
-            var password = document.getElementById("password").value;
-		var username = document.getElementById("username").value;
-            var repeatPassword = document.getElementById("repeat-password").value;
+        function confirmPayment() {
+            var billCompany = document.getElementById('billCompany').value;
+var rcompanyAccountNumber = document.getElementById('rcompanyAccountNumber').value;
+            var billAmount = document.getElementById('billAmount').value;
 
-            if (password !== repeatPassword) {
-                alert("Passwords do not match!");
-                return false;
-            } else if (password !== "webdevproj" || repeatPassword !== "webdevproj" || username !== "12345678") {
-                alert("Username or password is incorrect!");
-                return false;
+            var confirmMsg = "Do you want to transfer $" + amount + " to " + recipientName + " (" + companyAccountNumber + ")?";
+            var confirmed = confirm(confirmMsg);
+
+            if (confirmed) {
+                alert("Payment of $" + billAmount + " to " + billCompany + " successful!");
+                document.getElementById('billPaymentForm').reset();
             }
 
-            return true;
+            return false; // Prevent form submission
         }
-
-        function goToHomePage() {
-            window.location.href = "main.html";
+function goBack() {
+            window.history.back();
         }
-
-
     </script>
 </body>
 </html>

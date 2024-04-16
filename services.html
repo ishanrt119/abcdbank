@@ -194,15 +194,15 @@
                 <h2>Loan EMI Calculator</h2>
                 <div class="calculator">
                     <h3>Calculate Your Loan EMI</h3>
-                    <form class="calculator-form">
-                        <label for="loan-amount">Loan Amount:</label>
-                        <input type="text" id="loan-amount" name="loan-amount" placeholder="Enter Loan Amount">
-                        <label for="interest-rate">Interest Rate:</label>
-                        <input type="text" id="interest-rate" name="interest-rate" placeholder="Enter Interest Rate">
-                        <label for="loan-term">Loan Term (in months):</label>
-                        <input type="text" id="loan-term" name="loan-term" placeholder="Enter Loan Term">
-                        <input type="submit" value="Calculate">
-                    </form>
+                    <form id="loanForm" class="calculator-form">
+        <label for="loan-amount">Loan Amount:</label>
+        <input type="text" id="loan-amount" name="loan-amount" placeholder="Enter Loan Amount" required autocomplete="off">
+        <label for="interest-rate">Interest Rate:</label>
+        <input type="text" id="interest-rate" name="interest-rate" placeholder="Enter Interest Rate" required autocomplete="off">
+        <label for="loan-term">Loan Term (in months):</label>
+        <input type="text" id="loan-term" name="loan-term" placeholder="Enter Loan Term" required autocomplete="off">
+        <input type="submit" value="Calculate" onclick="calculateEMI()">
+    </form>
                 </div>
             </section>
 
@@ -210,15 +210,15 @@
                 <h2>Investment Calculator</h2>
                 <div class="calculator">
                     <h3>Calculate Your Investment Returns</h3>
-                    <form class="calculator-form">
-                        <label for="investment-amount">Investment Amount:</label>
-                        <input type="text" id="investment-amount" name="investment-amount" placeholder="Enter Investment Amount">
-                        <label for="annual-return">Annual Return Rate:</label>
-                        <input type="text" id="annual-return" name="annual-return" placeholder="Enter Annual Return Rate">
-                        <label for="investment-term">Investment Term (in years):</label>
-                        <input type="text" id="investment-term" name="investment-term" placeholder="Enter Investment Term">
-                        <input type="submit" value="Calculate">
-                    </form>
+                    <form id="investmentForm" class="calculator-form">
+        <label for="investment-amount">Investment Amount:</label>
+        <input type="text" id="investment-amount" name="investment-amount" placeholder="Enter Investment Amount" required autocomplete="off">
+        <label for="annual-return">Annual Return Rate:</label>
+        <input type="text" id="annual-return" name="annual-return" placeholder="Enter Annual Return Rate" required autocomplete="off">
+        <label for="investment-term">Investment Term (in years):</label>
+        <input type="text" id="investment-term" name="investment-term" placeholder="Enter Investment Term" required autocomplete="off">
+        <input type="submit" value="Calculate" onclick="calculateInvestmentReturn()">
+    </form>
                 </div>
             </section>
         </div>
@@ -236,5 +236,31 @@
             </div>
         </div>
     </footer>
+<script>
+        function calculateEMI() {
+            var loanAmount = parseFloat(document.getElementById('loan-amount').value);
+            var interestRate = parseFloat(document.getElementById('interest-rate').value);
+            var loanTerm = parseFloat(document.getElementById('loan-term').value);
+
+            // Convert annual interest rate to monthly interest rate
+            var monthlyInterestRate = interestRate / 1200;
+
+            // Calculate EMI using the formula
+            var emi = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -loanTerm));
+
+            alert("Your monthly EMI is: $" + emi.toFixed(2));
+        }
+
+function calculateInvestmentReturn() {
+            var investmentAmount = parseFloat(document.getElementById('investment-amount').value);
+            var annualReturnRate = parseFloat(document.getElementById('annual-return').value);
+            var investmentTerm = parseFloat(document.getElementById('investment-term').value);
+
+            // Calculate investment return using the formula
+            var totalReturn = investmentAmount * Math.pow((1 + annualReturnRate / 100), investmentTerm);
+
+            alert("Your total investment return is: $" + totalReturn.toFixed(2));
+        }
+    </script>
 </body>
 </html>

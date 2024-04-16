@@ -161,6 +161,51 @@
         .social-icons a:hover {
             color: #f0f0f0;
         }
+        .banner {
+            height: 400px;
+	    width: 1583px;
+            position: relative;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .banner-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .banner-image {
+            flex: 0 0 100%;
+        }
+        .banner-image img {
+            height: 400px;
+	    width: 1583px;
+            object-fit: cover;
+        }
+        .scroll-arrows {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        .scroll-arrow {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+        .scroll-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .scroll-arrow img {
+            width: 30px;
+            height: 30px;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -182,7 +227,32 @@
                 </ul>
             </nav>
         </div>
+
     </header>
+<div class="banner">
+        <div class="banner-container">
+            <div class="banner-image">
+                <img src="offer1.jpg" alt="Image 1" height: 400px;
+	    width: 1583px;>
+            </div>
+            <div class="banner-image">
+                <img src="offer2.jpg" alt="Image 2" height: 400px;
+	    width: 1583px;>
+            </div>
+            <div class="banner-image">
+                <img src="offer3.jpg" alt="Image 3" height: 400px;
+	    width: 1583px;>
+            </div>
+        </div>
+        <div class="scroll-arrows">
+            <div class="scroll-arrow" id="prev">
+                <img src="left.png" alt="Left Arrow">
+            </div>
+            <div class="scroll-arrow" id="next">
+                <img src="right.png" alt="Right Arrow">
+            </div>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <div class="main-content">
@@ -231,5 +301,35 @@
             </div>
         </div>
     </footer>
+<script>
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        const bannerContainer = document.querySelector('.banner-container');
+
+        let currentIndex = 0;
+
+        const images = document.querySelectorAll('.banner-image');
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex++;
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            updateBanner();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            }
+            updateBanner();
+        });
+
+        function updateBanner() {
+            const offset = -currentIndex * 100;
+            bannerContainer.style.transform = `translateX(${offset}%)`;
+        }
+    </script>
 </body>
 </html>
